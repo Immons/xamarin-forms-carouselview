@@ -10,10 +10,10 @@ namespace CustomLayouts.ViewModels
 		public SwitcherPageViewModel()
 		{
 			Pages = new List<HomeViewModel>() {
-				new HomeViewModel { Title = "1", Background = Color.White, ImageSource = "icon.png" },
-				new HomeViewModel { Title = "2", Background = Color.Red, ImageSource = "icon.png" },
-				new HomeViewModel { Title = "3", Background = Color.Blue, ImageSource = "icon.png" },
-				new HomeViewModel { Title = "4", Background = Color.Yellow, ImageSource = "icon.png" },
+				new HomeViewModel { Title = "1", BackgroundImage = ImageSource.FromFile("icon.png"), ImageSource = "icon.png" },
+				new HomeViewModel { Title = "2", BackgroundImage = ImageSource.FromFile("icon.png"), ImageSource = "icon.png" },
+				new HomeViewModel { Title = "3", BackgroundImage = ImageSource.FromFile("icon.png"), ImageSource = "icon.png" },
+				new HomeViewModel { Title = "4", BackgroundImage = ImageSource.FromFile("icon.png"), ImageSource = "icon.png" },
 			};
 
 			CurrentPage = Pages.First();
@@ -46,7 +46,7 @@ namespace CustomLayouts.ViewModels
 		public HomeViewModel() {}
 
 		public string Title { get; set; }
-		public Color Background { get; set; }
+		public ImageSource BackgroundImage { get; set; }
 		public string ImageSource { get; set; }
 	}
 }

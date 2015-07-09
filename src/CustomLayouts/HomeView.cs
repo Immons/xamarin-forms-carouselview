@@ -5,25 +5,28 @@ namespace CustomLayouts
 {
 	public class HomeView : ContentView
 	{
-		public HomeView()
+        public static readonly BindableProperty BackgroundImageProperty = BindableProperty.Create<HomeView, ImageSource>(p => p.BackgroundImage, string.Empty);
+
+	    public HomeView()
 		{
 			BackgroundColor = Color.White;
 
-			var label = new Label {
-				XAlign = TextAlignment.Center,
-				TextColor = Color.Black
-			};
-
-			label.SetBinding(Label.TextProperty, "Title");
-			this.SetBinding(ContentView.BackgroundColorProperty, "Background");
+	        var backgroundImage = new Image {WidthRequest = this.ParentView.Width, HeightRequest = this.ParentView.Height};
+            backgroundImage.SetBinding(BackgroundImageProperty, "BackgroundImage");
 
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
-					label
+					backgroundImage
 				}
 			};
 		}
+
+        public ImageSource BackgroundImage
+	    {
+	        get { return (string)GetValue(BackgroundImageProperty); }
+            set { SetValue(BackgroundImageProperty, value); }
+	    }
 	}
 }
 
